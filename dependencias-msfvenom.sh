@@ -1,97 +1,61 @@
-echo -e "Script criado por bruno henrique"
+echo -e "Script criado por Bruno Henrique Nunes"
 
 sleep 2
 
-echo " "
-
-echo -e "Atualizando repo do kali"
-
-sleep 5
-
-apt update
+echo -e "Baixando script do apktool"
 
 sleep 2
-
-echo " "
-
-echo -e "Baixando apktool"
-
-echo " "
 
 wget https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool
 
 sleep 2
 
-echo " "
-
-echo -e "Dando permissões de execução para o apktool"
+echo -e "Forneçendo permissões para apktool e movendo ele para /bin"
 
 sleep 2
 
 chmod +x apktool
 
-mv apktool /usr/bin
+sleep 2
+
+mv apktool /bin
 
 sleep 2
 
-echo " "
-
-echo -e "Baixando segunda parte do apktool.jar"
-
-echo " "
+echo -e "Baixando apktool com a extensão .jar"
 
 sleep 2
 
-echo " "
-
-wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.6.1.jar
-
-mv apktool_2.6.1.jar apktool.jar
-
-echo " "
-
-echo -e "Dando permissões de execução pra apktool.jar"
-
-chmod +x apktool.jar
-
-echo " "
-
-echo -e "Copiando apktool para bin"
-
-mv apktool.jar /usr/bin
-
-echo " "
-
-echo -e "Baixando java jdk"
-
-echo " "
+wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.8.1.jar
 
 sleep 2
 
-apt install default-jdk -y
-
-echo " "
-
-echo -e "Baixando apksigner"
-
-echo " "
-
-apt install apksigner -y
+echo -e "Forneçendo permissões para apktool.jar e renomeando ele"
 
 sleep 2
 
-echo " "
+mv apktool_2.8.1.jar apktool.jar ; mv apktool.jar /bin
+
+sleep 2
+
+echo -e "Baixando o apksigner"
+
+apt update ; apt install apksigner -y
+
+sleep 2
+
+echo -e "Baixando default-jdk"
+
+sleep 2
+
+apt install default-jdk
+
+sleep 2
 
 echo -e "Baixando zipalign"
-
-echo " "
-
-sleep 2
 
 apt install zipalign -y
 
 sleep 2
 
-echo " "
-
-echo -e "Script executado com sucesso"
+echo -e "Script executado com sucesso: agora você pode inserir backdoor nos apks"
